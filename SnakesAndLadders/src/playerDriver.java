@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 
 public class playerDriver {
@@ -6,33 +7,112 @@ public class playerDriver {
 
         JTextArea jta = new JTextArea("users:\n\n");
 
-        String name, colour;
+        String name, colour="",colourChoice;
+        int position, pos, boardsize;
+        boolean win=false, correct=false;
 
 
 
+
+
+
+        boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
+        while (boardsize>100||boardsize<20){
+            if (boardsize > 100) {
+                JOptionPane.showMessageDialog(null, "im sorry but you cannot enter that many squares the max is 100", "error", JOptionPane.ERROR_MESSAGE);
+                boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
+            }
+            if (boardsize < 20) {
+                JOptionPane.showMessageDialog(null, "im sorry but you have to enter more squares the minimum amount is 20", "error", JOptionPane.ERROR_MESSAGE);
+                boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
+            }    }
+
+
+        boardSetUp newBoard = new boardSetUp();
+
+        while(!correct){
+            for (int z = 9; z > 5; z--) {
+
+
+                if((boardsize%z) == 0){
+
+                    newBoard.setXaxis(z);
+                    newBoard.setYaxis(boardsize/z);
+                    correct=true;
+                    break;
+
+                }}
+
+                if (correct){
+                    break;
+                }
+                else {
+                    boardsize += 1;
+
+                }
+            }
+
+
+
+            System.out.println(newBoard.getXaxis()+"\n"+newBoard.getYaxis()+"\n"+boardsize);
 
         int amount = Integer.parseInt(JOptionPane.showInputDialog("Please enter the amount of players"));
         if (amount > 4 || amount <2) {
-            JOptionPane.showMessageDialog(null, "im sorry but at least two and only four players can play", "Stupid", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "im sorry but at least two and only four players can play", "error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        boolean[] myBool = new boolean[amount];
+
+        player[] playerArray= new player[amount];
+
+        for (int x = 0; x < amount; x++) {
+
+            name = JOptionPane.showInputDialog("Enter Name");
+            colourChoice=JOptionPane.showInputDialog("Enter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();
+
+            while(!colourChoice.equals("B")&&!colourChoice.equals("R")&&!colourChoice.equals("Y")&&!colourChoice.equals("G")){
+
+                colourChoice=JOptionPane.showInputDialog("That is not one of the letters\nEnter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();}
+            if(colourChoice.equals("B")){
+                colour="blue"; }
+
+            if(colourChoice.equals("R")){
+                colour="red"; }
+
+            if(colourChoice.equals("Y")){
+                colour="yellow"; }
+
+            if(colourChoice.equals("G")){
+                colour="green"; }
+
+            position=1;
+            playerArray[x] = new player(name, colour, position);
+            jta.append(playerArray[x].toString());
+
+
+
         }
 
 
-        else {
 
-            player[] playerArray= new player[amount];
 
-            for (int x = 0; x < amount; x++) {
+        while(!win) {
 
-                name = JOptionPane.showInputDialog("Enter Name");
-                colour = JOptionPane.showInputDialog("Enter colour");
-                playerArray[x] = new player(name, colour);
-                jta.append(playerArray[x].toString());
+            for(int y=0; y<amount; y++){
+                JOptionPane.showMessageDialog(null,
+
+
+                        "Your go "+playerArray[y].getName() + " hit the dice to move");
+                pos=SnL.dice(playerArray[y].getPosition(), newBoard.getXaxis(), newBoard.getYaxis());
+
+                playerArray[y].setPosition(pos);
+
+
+                if (pos==35){
+                    win=true;
+                    JOptionPane.showMessageDialog((Component)null, "congradulations " + playerArray[y].getName()+"you won");
+                }
             }
-
-  JOptionPane.showMessageDialog(null,jta);
-
         }
     }
 }
-
-

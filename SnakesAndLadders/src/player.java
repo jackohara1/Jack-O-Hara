@@ -7,14 +7,22 @@ public class player {
 
 
 
+    private int position;
+
+
+
+
+
+
     public player(){
-        this("player n","blue");
+        this("player n","blue",1);
     }
 
 
-    public player(String name,String colour){
+    public player(String name,String colour,int position){
         setColour(colour);
         setName(name);
+        setPosition(position);
     }
 
 
@@ -27,9 +35,11 @@ public class player {
         return name;
     }
 
+    public int getPosition() {return position; }
 
 
 
+    public void setPosition(int position) { this.position = position;}
 
     public void setColour(String colour) {
         this.colour = colour;
@@ -39,14 +49,10 @@ public class player {
         this.name = name;
     }
 
-
     public String toString() {
-        return String.format(" Name:%20s\n Colour:%20s\n\n",
-                getName(),getColour());
+        return  "name=" + name +
+                "\n colour=" + colour  +
+                "\n position=" + position +"\n\n";
     }
-
-
-
-
 }
 
