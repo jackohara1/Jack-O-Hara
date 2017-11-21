@@ -1,6 +1,9 @@
 import javax.swing.*;
 
 public class board2 {
+
+
+
     private JPanel panel1;
     private JPanel a2;
     private JPanel a1;

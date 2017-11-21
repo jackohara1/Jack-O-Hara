@@ -1,7 +1,7 @@
 import java.awt.Component;
 import java.util.Random;
 import javax.swing.JOptionPane;
-
+import java.applet.Applet;
 public class SnL {
     public SnL() {
     }
@@ -83,4 +83,69 @@ public class SnL {
         System.out.println(p + "\n");
         return p;
 
-}}
+}
+
+
+public static int retrivenewBoardsize(int b){
+       boolean correct=false;
+
+    while(!correct){
+        for (int z = 9; z > 4; z--) {
+
+
+            if((b%z) == 0){
+
+
+                correct=true;
+                break;
+            }//end of if
+        }//end of for loop
+        if (correct){
+            break;
+        }//if to exit the while loop
+        else {
+            b += 1;
+
+        }//else to edit boardsize entered
+    }//loop to set x and y axis
+
+
+
+    return b;
+
+}
+
+public static int retriveXaxis(int b,int x){
+
+
+
+            for (int z = 9; z > 4; z--) {
+
+
+                if((b%z) == 0){
+
+                    x=z;
+
+
+                    break;
+                }//end of if
+            }//end of for loop
+           //else to edit boardsize entered
+
+
+
+
+        return x;
+}
+    public static int retriveYaxis(int b,int x, int y){
+
+
+
+
+
+        y  = b/x;
+
+        return y;
+    }
+
+}
