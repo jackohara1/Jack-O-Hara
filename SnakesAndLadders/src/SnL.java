@@ -8,88 +8,113 @@ public class SnL {
 
 
 
-    public static int dice(int p, int x, int y) {
-        Random rand = new Random();
-        int dice = rand.nextInt(6) + 1, z=x*y;
+    public static int dice(int p, int dice, int z) {
+
 
 
         if (p+dice < z){
 
             p += dice;
 
+            if(p+dice ==z){
 
 
+            }
 
+            }
+            else if (p+dice > z){
+                JOptionPane.showMessageDialog((Component)null, "you've gotten " +(dice)+ " too high try again");
+                p= (z*2)-(p+dice);
 
-                        JOptionPane.showMessageDialog((Component)null, "You got " + dice + " your new score is " + p);
+            } return p;
+            }
+
+            public static int ladder1 (int p, int z)
+            {
+
                         if (p == (int)(z*.3)) {
                             p = (int)(z*.52);
                             JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
-                        }
+                        }        return p;
+            }
+
+    public static int snake1 (int p, int z)
+    {
 
                         if (p == (int)(z*.62)) {
                             p = (int)(z*.42);
                             JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
                         }
+                        return p;
+            }
 
-            if (y>=4){
+    public static int ladder2 (int p, int z)
+    {
+
 
                         if (p == (int)(z*.69)) {
                             p = (int)(z*.86);
                             JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
                         }
+                return p;
             }
 
-            if (y>= 5) {
+        public static int snake2 (int p, int z)
+        {
+
+
+             {
                         if (p == (int)(z*.37)) {
                             p = (int)(z*.21);
                             JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
                         }
 
-            }
-            if (y>=6){
+            }        return p;
+        }
+
+    public static int ladder3 (int p, int z)
+    {
+            {
 
                 if (p == (int)(z*.57)) {
                     p = (int)(z*.72);
                     JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
                 }
-            }
-            if (y>= 7) {
+            }        return p;
+    }
+
+    public static int snake3 (int p, int z)
+    {
+             {
                 if (p == (int)(z*.91)) {
                     p = (int)(z*.66);
                     JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
                 }
 
-            }
-            if (y>= 8){
+            }        return p;
+    }
+
+    public static int ladder4 (int p, int z)
+    {
+           {
 
                if (p == (int)(z*.17)) {
                    p = (int)(z*.29);
                    JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
                     }
 
-                }      }
-         if(p+dice ==z){
+                }  return p;    }
 
 
 
-             return p=z;
-         }
-        else if (p+dice > z){
-                             JOptionPane.showMessageDialog((Component)null, "you've gotten " +(dice)+ " too high try again");
-              p= (z*2)-(p+dice);
-        }
-
-        System.out.println(p + "\n");
-        return p;
-
-}
 
 
-public static int retrivenewBoardsize(int b){
+
+
+    public static int retrivenewBoardsize(int b){
        boolean correct=false;
 
-    while(!correct){
+        while(!correct){
         for (int z = 9; z > 4; z--) {
 
 

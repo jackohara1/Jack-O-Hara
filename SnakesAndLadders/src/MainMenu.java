@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
 
 
 public class MainMenu extends JFrame implements ActionListener
@@ -8,15 +9,15 @@ public class MainMenu extends JFrame implements ActionListener
     JMenu playerMenu;
     JMenu boardMenu;
     JMenu startMenu;
-    JLabel response; // to hold a result from the menus
+
 
     int amount;
 
-    boardSetUp newBoard = new boardSetUp();
-    player[] playerArray= new player[amount];
+
     public static void main(String[] args) {
         MainMenu frame = new MainMenu();
         frame.setVisible(true);
+
 
 
     }
@@ -24,11 +25,16 @@ public class MainMenu extends JFrame implements ActionListener
     public MainMenu() {
         Container cPane;
        //set the frame properties
-        setIconImage(new ImageIcon(".\\images\\icon.png").getImage());
+
+
+
+
+        setIconImage(new ImageIcon("images\\icon.png").getImage());
         setTitle     ("Snakes and Ladders");
-        setSize      (300,200);
+        setSize      (1000,750);
         setResizable (false);
         setLocation  (250,200);
+
         // shut down the program when the window is closed
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -48,33 +54,67 @@ public class MainMenu extends JFrame implements ActionListener
         menuBar.add(boardMenu);
         menuBar.add(startMenu);
         //create and position reponse label
-        response = new JLabel("Hello, this is your menu tester." );
-        response.setSize(250, 50); // optional
-        cPane.add(response);
-        getClass().getResource("/resources/images/MenuImage.png");
+        JLabel background = new JLabel(new ImageIcon("images\\MenuImage.jpg"));
+        add(background);
+        background.setLayout(new FlowLayout());
+        background.setVisible(true);
+
+
     } // end constructor
 
     /** when an item is clicked, response starts here */
     public void actionPerformed(ActionEvent event) {
         String menuName;
+        boardSetUp newBoard = new boardSetUp();
+        spaces[] spacesArray = new spaces[newBoard.getSpaces()];
+        player[] playerArray= new player[amount];
         menuName = event.getActionCommand(); // what's written on the item that was clicked
         // note the String comparison
         if (menuName.equals("Quit")) {
             System.exit(0);
         } // end if
         else if (menuName.equals("add")) {
+
             int amount = Integer.parseInt(JOptionPane.showInputDialog("Please enter the amount of players"));
             if (amount > 4 || amount < 2) {
                 JOptionPane.showMessageDialog(null, "im sorry but at least two and only four players can play", "error", JOptionPane.ERROR_MESSAGE);
             }
+            else {
+                for (int x = 0; x < amount; x++) {
+
+                    String name, colourChoice;
+                    int position;
+                    name = JOptionPane.showInputDialog("Enter Name");
+                    colourChoice = JOptionPane.showInputDialog("Enter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();
+
+                    while (!colourChoice.equals("B") && !colourChoice.equals("R") && !colourChoice.equals("Y") && !colourChoice.equals("G")) {
+
+                        colourChoice = JOptionPane.showInputDialog("That is not one of the letters\nEnter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();
+                    }//validation for colour
+                    if (colourChoice.equals("B")) {
+                        colourChoice = "blue";
+                    }
+
+                    if (colourChoice.equals("R")) {
+                        colourChoice = "red";
+                    }
+
+                    if (colourChoice.equals("Y")) {
+                        colourChoice = "yellow";
+                    }
+
+                    if (colourChoice.equals("G")) {
+                        colourChoice = "green";
+                    }
 
 
-            for (int x = 0; x < amount; x++) {
-                playerArray[x].setName(playerDriver.name());
-                playerArray[x].setColour(playerDriver.colour());
-                playerArray[x].setPosition(1);
-            }//validation for entering the right amount of players
-        } // end else
+                    playerArray[x].setColour(colourChoice);
+                    playerArray[x].setName(name);
+                    playerArray[x].setPosition(1);
+                }
+
+              //validation for entering the right amount of players
+            }} // end else
 
         else if (menuName.equals("boardsize")) {
             int Xaxis = 0, Yaxis = 0, boardsize;
@@ -94,26 +134,111 @@ public class MainMenu extends JFrame implements ActionListener
             newBoard.setSpaces(SnL.retrivenewBoardsize(boardsize));
             newBoard.setXaxis(SnL.retriveXaxis(boardsize, Xaxis));
             newBoard.setYaxis(SnL.retriveYaxis(boardsize, Xaxis, Yaxis));
+
         } else if (menuName.equals("playGame")) {
-            boolean win = false;
-            int pos;
-            while (!win) {
+
+
+                GridLayout boardgrid = new GridLayout(newBoard.getXaxis(),newBoard.getYaxis());
+                JPanel[] spacePanelArray = new JPanel[newBoard.getSpaces()];
+                boolean win = false;
+                int pos, s=1;
+                while (!win) {
+                Random rand = new Random();
+                Container boardContainer;
+                   boardContainer= getContentPane();
+
+                boardContainer.setLayout(boardgrid);
+
+
+                    for(int q=0;q<=newBoard.getYaxis();q++){
+                        for(int x=0; x<=newBoard.getXaxis();x++){
+
+
+
+                            if(q % 2 == 0){
+
+
+                                spacesArray[s].setXAxis(x);
+                            }
+                            else{
+
+                                spacesArray[s].setXAxis(newBoard.getXaxis()-x);
+                            }
+
+
+                            spacesArray[s].setYAxis(q);
+                            boardContainer.add(new JPanel());{
+                                setBackground(Color.orange);
+
+                                spacePanelArray[q].setLocation(spacesArray[s].getXAxis(),spacesArray[s].getYAxis());
+                                spacePanelArray[q].setBackground(Color.orange);
+                            }
+
+
+
+                            Container spaceContainer;
+                            GridLayout spacegrid = new GridLayout((int)(amount/2), (int)(amount/2));
+
+                            spaceContainer = getContentPane();
+                            spaceContainer.setLayout(spacegrid);
+                            JPanel[] gridpanelArray = new JPanel[newBoard.getSpaces()];
+                            int a=1,b=1;
+                                    for (int p=1; p>=amount; p++ ){
+                                        String col=playerArray[p].getColour();
+                                        spaceContainer.add(new JPanel());
+                                        setBackground(Color.orange);
+                                         if (p==1){
+                                            a=1;
+                                            b=1;}
+                                         else if (p==2){
+                                             a=1;
+                                             b=2;}
+                                         else if (p==3){
+                                             a=2;
+                                             b=1;}
+                                         else if (p==4){
+                                             a=2;
+                                             b=2;}
+
+                                        gridpanelArray[p].setLocation(a,b);
+
+
+                                    }
+
+
+                            s++;
+
+                        }}
+
+
 
                 for (int y = 0; y < newBoard.getSpaces(); y++) {
-                    JOptionPane.showMessageDialog(null,
 
 
-                            "Your go " + playerArray[y].getName() + " hit the dice to move");
-                    pos = SnL.dice(playerArray[y].getPosition(), newBoard.getXaxis(), newBoard.getYaxis());
 
+
+
+
+
+                    int dice = rand.nextInt(6) + 1;
+                    JOptionPane.showMessageDialog(null, "Your go " + playerArray[y].getName() + " hit the dice to move");
+                    pos = SnL.dice(playerArray[y].getPosition(), dice, newBoard.getSpaces());
+
+
+                               pos=SnL.ladder1(pos,newBoard.getSpaces());
+                               pos=SnL.snake1(pos,newBoard.getSpaces());
+                    if (newBoard.getYaxis()>=4){ pos=SnL.ladder2(pos,newBoard.getSpaces());}
+                    if (newBoard.getYaxis()>=5){ pos=SnL.snake2(pos,newBoard.getSpaces());}
+                    if (newBoard.getYaxis()>=6){ pos=SnL.ladder3(pos,newBoard.getSpaces());}
+                    if (newBoard.getYaxis()>=7){ pos=SnL.snake3(pos,newBoard.getSpaces());}
+                    if (newBoard.getYaxis()>=8){ pos=SnL.ladder4(pos,newBoard.getSpaces());}
                     playerArray[y].setPosition(pos);
-
 
                     if (pos == 35) {
                         win = true;
                         JOptionPane.showMessageDialog((Component) null, "congradulations " + playerArray[y].getName() + "you won");
                     }//end of wining if statement
-                }
+                    }
             }
 
 

@@ -1,9 +1,20 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
-public class runGame {   public static void main(String[] args) {
+public class runGame extends JFrame {
+    public static void main(String[] args) {
 
-    JTextArea jta = new JTextArea("users:\n\n");
+        runGame frame = new runGame();
+        frame.setVisible(true);
+        Random rand = new Random();
+        int dice = rand.nextInt(6) + 1;
+
+
+
+
+
+    /*JTextArea jta = new JTextArea("users:\n\n");
 
 
 
@@ -152,6 +163,6 @@ public class runGame {   public static void main(String[] args) {
             }//end of wining if statement
         }//end of for loop for checking if winner
     }//end of while loop checking for winner
-}//end of main
+*/}//end of main
 
 }
