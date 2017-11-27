@@ -104,20 +104,13 @@ public class test extends JFrame{
 
 
 
-
+System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYaxis());
 
         JFrame frame2= new JFrame();
+        frame2.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame2.setVisible(true);
-
-
-
-
-
-
-
-        JPanel[] spacePanelArray = new JPanel[newBoard.getSpaces()];
-
-        GridLayout boardgrid = new GridLayout(newBoard.getXaxis(),newBoard.getYaxis());
+        frame2.setSize(750,500);
+        frame2.setLayout(new GridLayout(newBoard.getXaxis(),newBoard.getYaxis()));
 
         boolean win = false;
 
@@ -129,10 +122,10 @@ public class test extends JFrame{
 
 
 
-
+        JPanel[] spacePanelArray = new JPanel[newBoard.getSpaces()];
         spaces[] spacesArray = new spaces[newBoard.getSpaces()];
 
-       frame2.setLayout(boardgrid);
+
 
 
 
@@ -141,12 +134,6 @@ public class test extends JFrame{
         for(int q=0;q<=newBoard.getYaxis();q++){
 
             for(int x=0; x<=newBoard.getXaxis();x++){
-
-
-
-
-
-
 
                 if(q % 2 == 0){
 
@@ -157,43 +144,24 @@ public class test extends JFrame{
                     spacesArray[s]= new spaces(newBoard.getXaxis()-x, q);
 
                 }
-
-
-
-
-                spacePanelArray[s].add(new JPanel());{
-
+                    spacePanelArray[s].setLocation(spacesArray[s].getXAxis(),spacesArray[s].getYAxis());
                     spacePanelArray[s].setBackground(Color.orange);
 
 
 
-                    spacePanelArray[q].setLocation(spacesArray[s].getXAxis(),spacesArray[s].getYAxis());
-
-
-
-                }
-
-
-
-
-                GridLayout spacegrid = new GridLayout(2, 2);
 
 
 
 
 
-               spacePanelArray[s].setLayout(spacegrid);
 
-                JPanel[] gridpanelArray = new JPanel[newBoard.getSpaces()];
+                spacePanelArray[s].setLayout(new GridLayout(2, 2));
+                JPanel[] gridpanelArray = new JPanel[4];
 
 
                 int a=1,b=1;
 
-                for (int p=1; p>=4; p++ ){
-
-
-
-                    gridpanelArray[p].add(gridpanelArray[p]);
+                for (int p=1; p<=4; p++ ){
 
                     gridpanelArray[p].setBackground(Color.orange);
 
@@ -203,8 +171,9 @@ public class test extends JFrame{
                     else if (p==4){ a=2;b=2;}
 
                     gridpanelArray[p].setLocation(a,b);
+                    spacePanelArray[s].add(gridpanelArray[p]);
                 }
-
+                frame2.add(spacePanelArray[s]);
                 s++;
 
 
@@ -223,11 +192,24 @@ public class test extends JFrame{
 
                 JOptionPane.showMessageDialog(null, "Your go " + playerArray[y].getName() + " hit the dice to move");
 
+
+
                 pos = SnL.dice(playerArray[y].getPosition(), dice, newBoard.getSpaces());
 
+                spacePanelArray[pos-dice].gridPanelArray[y].setBackground(Color.orange);
 
-
-
+                if (playerArray[y].getColour().equals("yellow")){
+                    spacePanelArray[pos].gridPanelArray[y].setBackground(Color.yellow);
+                }
+                else if (playerArray[y].getColour().equals("green")){
+                    spacePanelArray[pos].gridPanelArray[y].setBackground(Color.green);
+                }
+                else if (playerArray[y].getColour().equals("blue")){
+                    spacePanelArray[pos].gridPanelArray[y].setBackground(Color.blue);
+                }
+                else if (playerArray[y].getColour().equals("red")){
+                    spacePanelArray[pos].gridPanelArray[y].setBackground(Color.red);
+                }
 
                 pos=SnL.ladder1(pos,newBoard.getSpaces());
 

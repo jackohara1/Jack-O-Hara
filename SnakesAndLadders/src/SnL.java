@@ -144,7 +144,7 @@ public static int retriveXaxis(int b,int x){
 
 int z;
 
-            for (z = 9; z > 4; z--) {
+            for (z = 9; z > 5; z--) {
 
 
                 if((b%z) == 0){
