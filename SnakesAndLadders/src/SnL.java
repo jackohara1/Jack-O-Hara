@@ -142,21 +142,21 @@ public class SnL {
 
 public static int retriveXaxis(int b,int x){
 
+int z;
 
-
-            for (int z = 9; z > 4; z--) {
+            for (z = 9; z > 4; z--) {
 
 
                 if((b%z) == 0){
 
-                    x=z;
+
 
 
                     break;
                 }//end of if
             }//end of for loop
            //else to edit boardsize entered
-
+             x=z;
 
 
 

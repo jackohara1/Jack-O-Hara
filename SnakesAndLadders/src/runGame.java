@@ -1,14 +1,148 @@
-import javax.swing.*;
+/*import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.Random;
 
-public class runGame extends JFrame {
-    public static void main(String[] args) {
+public class runGame extends JFrame implements ActionListener {
 
-        runGame frame = new runGame();
-        frame.setVisible(true);
-        Random rand = new Random();
-        int dice = rand.nextInt(6) + 1;
+    public void main(String args[]) {
+
+
+        boardSetUp newBoard = MainMenu.newBoard();
+        player[] playerArray= MainMenu.playerArray();
+
+        runGame frame1 = new runGame();
+
+        frame1.setVisible(true);
+
+
+
+
+    } public runGame() {
+
+            Container cPane;
+
+            //set the frame properties
+        MainMenu retrieve = new MainMenu();
+
+
+
+            setIconImage(new ImageIcon("images\\icon.png").getImage());
+
+            setTitle     ("Snakes and Ladders");
+
+            setSize      (1000,750);
+
+            setResizable (false);
+
+            setLocation  (250,200);
+
+
+
+            // shut down the program when the window is closed
+
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+
+
+            cPane = getContentPane();
+
+            cPane.setLayout(new FlowLayout());
+
+
+            GridLayout boardgrid = new GridLayout(newBoard.getXaxis(),newBoard.getYaxis());
+
+
+            JPanel[] spacePanelArray = new JPanel[newBoard.getSpaces()];
+
+
+
+
+            int s=1;
+
+
+
+
+
+            Container boardContainer;
+
+            boardContainer= getContentPane();
+
+            boardContainer.setLayout(boardgrid);
+
+
+
+
+
+            for(int q=0;q<=newBoard.getYaxis();q++){
+
+                for(int x=0; x<=newBoard.getXaxis();x++){
+
+                    if(q % 2 == 0){
+                        spacesArray[s].setXAxis(x);
+                    }
+
+                    else{
+                        spacesArray[s].setXAxis(newBoard.getXaxis()-x);
+                    }
+
+                    spacesArray[s].setYAxis(q);
+
+                    boardContainer.add(new JPanel());{
+
+                        setBackground(Color.orange);
+
+
+
+                        spacePanelArray[s].setLocation(spacesArray[s].getXAxis(),spacesArray[s].getYAxis());
+
+                        spacePanelArray[s].setBackground(Color.orange);
+
+                    }
+                    Container spaceContainer;
+
+                    GridLayout spacegrid = new GridLayout((int)(retrieve.amount/2), (int)(retrieve.amount/2));
+
+
+
+                    spaceContainer = getContentPane();
+
+                    spaceContainer.setLayout(spacegrid);
+
+                    JPanel[] gridpanelArray = new JPanel[newBoard.getSpaces()];
+
+
+
+                    for (int p=1; p>=retrieve.amount; p++ ){
+
+                        int a=1,b=1;
+
+
+                        spaceContainer.add(new JPanel());
+
+                        gridpanelArray[p].setBackground(Color.orange);
+
+                        if (p==1){ a=1;b=1;}
+                        else if (p==2){a=1;b=2;}
+                        else if (p==3){ a=2;b=1;}
+                        else if (p==4){ a=2;b=2;}
+
+
+
+                        gridpanelArray[p].setLocation(a,b);
+
+                    }
+
+                    s++;
+                }
+
+
+
+
+
+
+
+
 
 
 
@@ -163,6 +297,4 @@ public class runGame extends JFrame {
             }//end of wining if statement
         }//end of for loop for checking if winner
     }//end of while loop checking for winner
-*/}//end of main
-
-}
+*/
