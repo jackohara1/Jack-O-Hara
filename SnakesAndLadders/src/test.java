@@ -109,7 +109,7 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
         JFrame frame2= new JFrame();
         frame2.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame2.setVisible(true);
-        frame2.setSize(750,500);
+        frame2.setSize(newBoard.getXaxis()*100,newBoard.getYaxis()*100);
         frame2.setLayout(new GridLayout(newBoard.getXaxis(),newBoard.getYaxis()));
 
         boolean win = false;
@@ -118,17 +118,23 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
 
 
 
+
         Random rand = new Random();
 
 
 
         JPanel[] spacePanelArray = new JPanel[newBoard.getSpaces()];
+
         spaces[] spacesArray = new spaces[newBoard.getSpaces()];
 
+        ImageIcon one =new ImageIcon("src\\images\\one.png");
+        JButton dicebutton = new JButton(one);
+
+        dicebutton.setSize(1,1);
 
 
 
-
+        frame2.add(dicebutton);
 
 
         for(int q=0;q<=newBoard.getYaxis();q++){
@@ -144,10 +150,13 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
                     spacesArray[s]= new spaces(newBoard.getXaxis()-x, q);
 
                 }
+                    spacePanelArray[s] = new JPanel();
                     spacePanelArray[s].setLocation(spacesArray[s].getXAxis(),spacesArray[s].getYAxis());
                     spacePanelArray[s].setBackground(Color.orange);
-
-
+                    spacePanelArray[s].setSize(100, 100);
+                    JTextArea spacetext = new JTextArea();
+                    spacetext.setText(""+s+"");
+                    spacePanelArray[s].add(spacetext);
 
 
 
@@ -159,12 +168,13 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
                 JPanel[] gridpanelArray = new JPanel[4];
 
 
-                int a=1,b=1;
+
 
                 for (int p=1; p<=4; p++ ){
-
+                    int a=1,b=1;
+                    gridpanelArray[p]=new JPanel();
                     gridpanelArray[p].setBackground(Color.orange);
-
+                    gridpanelArray[p].setSize(50,40);
                     if (p==1){ a=1;b=1;}
                     else if (p==2){a=1;b=2;}
                     else if (p==3){ a=2;b=1;}
@@ -182,6 +192,7 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
 
 
 
+
         while (!win) {
 
 
@@ -196,19 +207,19 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
 
                 pos = SnL.dice(playerArray[y].getPosition(), dice, newBoard.getSpaces());
 
-                spacePanelArray[pos-dice].gridPanelArray[y].setBackground(Color.orange);
+                spacePanelArray[pos-dice]/*.gridPanelArray[y]*/.setBackground(Color.orange);
 
                 if (playerArray[y].getColour().equals("yellow")){
-                    spacePanelArray[pos].gridPanelArray[y].setBackground(Color.yellow);
+                    spacePanelArray[pos]/*.gridPanelArray[y]*/.setBackground(Color.yellow);
                 }
                 else if (playerArray[y].getColour().equals("green")){
-                    spacePanelArray[pos].gridPanelArray[y].setBackground(Color.green);
+                    spacePanelArray[pos]/*.gridPanelArray[y]*/.setBackground(Color.green);
                 }
                 else if (playerArray[y].getColour().equals("blue")){
-                    spacePanelArray[pos].gridPanelArray[y].setBackground(Color.blue);
+                    spacePanelArray[pos]/*.gridPanelArray[y]*/.setBackground(Color.blue);
                 }
                 else if (playerArray[y].getColour().equals("red")){
-                    spacePanelArray[pos].gridPanelArray[y].setBackground(Color.red);
+                    spacePanelArray[pos]/*.gridPanelArray[y]*/.setBackground(Color.red);
                 }
 
                 pos=SnL.ladder1(pos,newBoard.getSpaces());
