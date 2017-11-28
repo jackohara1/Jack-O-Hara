@@ -345,11 +345,11 @@ public class MainMenu extends JFrame implements ActionListener
 
                         int a=1,b=1;
 
-                        for (int p=1; p>=4; p++ ){
+                        for (int p=1; p<=4; p++ ){
 
 
 
-                            spaceContainer.add(gridpanelArray[p]);
+
 
                             setBackground(Color.orange);
 
@@ -359,6 +359,7 @@ public class MainMenu extends JFrame implements ActionListener
                             else if (p==4){ a=2;b=2;}
 
                             gridpanelArray[p].setLocation(a,b);
+                            spaceContainer.add(gridpanelArray[p]);
                         }
 
                         s++;
