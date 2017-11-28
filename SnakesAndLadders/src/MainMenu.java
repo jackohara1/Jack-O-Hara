@@ -379,7 +379,7 @@ public class MainMenu extends JFrame implements ActionListener
 
                     JOptionPane.showMessageDialog(null, "Your go " + playerArray[y].getName() + " hit the dice to move");
 
-                    pos = SnL.dice(playerArray[y].getPosition(), dice, newBoard.getSpaces());
+                    pos = SnL.dice(playerArray[y].getPosition(), dice);
 
 
 

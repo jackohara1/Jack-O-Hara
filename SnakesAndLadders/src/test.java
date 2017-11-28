@@ -9,7 +9,41 @@ import java.util.Random;
 public class test extends JFrame{
     public static void main(String[] args) {
 
+        boardSetUp newBoard = new boardSetUp();
 
+        int Xaxis=0, boardsize;
+
+
+
+
+
+
+        boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
+
+        while (boardsize > 100 || boardsize < 20) {
+
+            if (boardsize > 100) {
+
+                JOptionPane.showMessageDialog(null, "im sorry but you cannot enter that many squares the max is 100", "error", JOptionPane.ERROR_MESSAGE);
+
+                boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
+
+            }//if boardsize
+
+            if (boardsize < 20) {
+
+                JOptionPane.showMessageDialog(null, "im sorry but you have to enter more squares the minimum amount is 20", "error", JOptionPane.ERROR_MESSAGE);
+
+                boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
+
+            }//if boardsize
+
+        }//boardsize validation loop
+        newBoard.setSpaces(SnL.retrivenewBoardsize(boardsize));
+
+        newBoard.setXaxis(SnL.retriveXaxis(boardsize, Xaxis));
+
+        newBoard.setYaxis(newBoard.getSpaces()/newBoard.getXaxis());
 
 
         int amount = Integer.parseInt(JOptionPane.showInputDialog("Please enter the amount of players"));
@@ -55,50 +89,17 @@ public class test extends JFrame{
             }
 
 
-                playerArray[x]= new player(name, colourChoice, 1);
+                playerArray[x]= new player(name, colourChoice, newBoard.getSpaces()-1);
 
 
 
                }
 
-        boardSetUp newBoard = new boardSetUp();
-
-        int Xaxis=0, Yaxis=0, boardsize;
 
 
 
 
 
-
-        boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
-
-        while (boardsize > 100 || boardsize < 20) {
-
-            if (boardsize > 100) {
-
-                JOptionPane.showMessageDialog(null, "im sorry but you cannot enter that many squares the max is 100", "error", JOptionPane.ERROR_MESSAGE);
-
-                boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
-
-            }//if boardsize
-
-            if (boardsize < 20) {
-
-                JOptionPane.showMessageDialog(null, "im sorry but you have to enter more squares the minimum amount is 20", "error", JOptionPane.ERROR_MESSAGE);
-
-                boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
-
-            }//if boardsize
-
-        }//boardsize validation loop
-
-
-
-        newBoard.setSpaces(SnL.retrivenewBoardsize(boardsize));
-
-        newBoard.setXaxis(SnL.retriveXaxis(boardsize, Xaxis));
-
-        newBoard.setYaxis(newBoard.getSpaces()/newBoard.getXaxis());
 
 
 
@@ -106,71 +107,76 @@ public class test extends JFrame{
 
 System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYaxis());
 
-        JFrame frame2= new JFrame();
+        JFrame frame2= new JFrame("snakes and ladders");
         frame2.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame2.setVisible(true);
-        frame2.setSize(newBoard.getXaxis()*100,newBoard.getYaxis()*100);
-        frame2.setLayout(new GridLayout(newBoard.getXaxis(),newBoard.getYaxis()));
+        //frame2.setSize(newBoard.getXaxis()*200,newBoard.getYaxis()*200);
+        frame2.setLayout(new GridLayout(newBoard.getXaxis(),(newBoard.getYaxis()+1)));
 
-        boolean win = false;
+        ImageIcon diceimage =new ImageIcon("src\\images\\one.png");
+        JButton one = new JButton(diceimage);
 
-        int pos, s=1;
-
-
-
-
-        Random rand = new Random();
+        one.setSize(1/10,1/10);
 
 
+        ImageIcon snakeheadimg = new ImageIcon("src\\images\\snakehead.png");
+        ImageIcon snaketailimg = new ImageIcon("src\\images\\snaketail.png");
+        ImageIcon ladderheadimg = new ImageIcon("src\\images\\ladderhead.png");
+        ImageIcon laddertailimg = new ImageIcon("src\\images\\laddertail.png");
+        JLabel laddertail = new JLabel(laddertailimg);
+        JLabel ladderhead = new JLabel(ladderheadimg);
+        JLabel snaketail = new JLabel(snaketailimg);
+        JLabel snakehead = new JLabel(snakeheadimg);
 
-        JPanel[] spacePanelArray = new JPanel[newBoard.getSpaces()];
+        int pos, s=newBoard.getSpaces(),w=0;
+        JPanel[] spacePanelArray = new JPanel[100];
 
-        spaces[] spacesArray = new spaces[newBoard.getSpaces()];
+        for(int q=0; q<=newBoard.getYaxis();q++){
 
-        ImageIcon one =new ImageIcon("src\\images\\one.png");
-        JButton dicebutton = new JButton(one);
+            for(int x=0; x<newBoard.getXaxis();x++){
 
-        dicebutton.setSize(1,1);
+                spacePanelArray[w] = new JPanel();
 
-
-
-        frame2.add(dicebutton);
-
-
-        for(int q=0;q<=newBoard.getYaxis();q++){
-
-            for(int x=0; x<=newBoard.getXaxis();x++){
-
-                if(q % 2 == 0){
-
-                    spacesArray[s]= new spaces (x, q);
-                }
-
-                else{
-                    spacesArray[s]= new spaces(newBoard.getXaxis()-x, q);
-
-                }
-                    spacePanelArray[s] = new JPanel();
-                    spacePanelArray[s].setLocation(spacesArray[s].getXAxis(),spacesArray[s].getYAxis());
-                    spacePanelArray[s].setBackground(Color.orange);
-                    spacePanelArray[s].setSize(100, 100);
+              //  if(q % 2 == 0){
+                    spacePanelArray[w].setLocation(x, q+1);
+                    spacePanelArray[w].setBackground(Color.cyan);
                     JTextArea spacetext = new JTextArea();
-                    spacetext.setText(""+s+"");
-                    spacePanelArray[s].add(spacetext);
+                    spacetext.setText(""+(s)+"");
+                    spacetext.setBackground(Color.cyan);
+                    spacePanelArray[w].add(spacetext);
+                    spacePanelArray[w].setLayout(new GridLayout(2, 2));
+
+
+               /*if ((int)(newBoard.getSpaces()*.3)==s){spacePanelArray[w].add(laddertail);}
+                if ((int)(newBoard.getSpaces()*.52)==s){spacePanelArray[w].add(ladderhead);}
+
+                if ((int)(newBoard.getSpaces()*.62)==s){spacePanelArray[w].add(snakehead);}
+                if ((int)(newBoard.getSpaces()*.42)==s){spacePanelArray[w].add(snaketail);}
+
+                if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.67)==w){spacePanelArray[w].add(laddertail);}
+                if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.86)==w){spacePanelArray[w].add(ladderhead);}
+
+                if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.32)==w){spacePanelArray[w].add(snakehead);}
+                if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.21)==w){spacePanelArray[w].add(snaketail);}
+
+                if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.57)==w){spacePanelArray[w].add(laddertail);}
+                if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.72)==w){spacePanelArray[w].add(ladderhead);}
+
+                if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.91)==w){spacePanelArray[w].add(snakehead);}
+                if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.66)==w){spacePanelArray[w].add(snaketail);}
+
+                if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.12)==w){spacePanelArray[w].add(laddertail);}
+                if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.29)==w){spacePanelArray[w].add(ladderhead);}*/
 
 
 
 
 
 
-
-                spacePanelArray[s].setLayout(new GridLayout(2, 2));
+/*
                 JPanel[] gridpanelArray = new JPanel[4];
 
-
-
-
-                for (int p=1; p<=4; p++ ){
+                for (int p=1; p<=5; p++ ){
                     int a=1,b=1;
                     gridpanelArray[p]=new JPanel();
                     gridpanelArray[p].setBackground(Color.orange);
@@ -182,16 +188,23 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
 
                     gridpanelArray[p].setLocation(a,b);
                     spacePanelArray[s].add(gridpanelArray[p]);
-                }
-                frame2.add(spacePanelArray[s]);
-                s++;
+                }*/
 
-
-
+        if (s==0){break;}
+        frame2.add(spacePanelArray[w]);
+                s--;
+                w++;
             }}
+            one.setLocation(1,1);
+        frame2.add(one);
 
-
-
+        boolean win = false;
+        Random rand = new Random();
+        ImageIcon two =new ImageIcon("src\\images\\two.png");
+        ImageIcon three =new ImageIcon("src\\images\\three.png");
+        ImageIcon four =new ImageIcon("src\\images\\four.png");
+        ImageIcon five =new ImageIcon("src\\images\\five.png");
+        ImageIcon six =new ImageIcon("src\\images\\six.png");
 
         while (!win) {
 
@@ -201,13 +214,18 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
 
                 int dice = rand.nextInt(6) + 1;
 
-                JOptionPane.showMessageDialog(null, "Your go " + playerArray[y].getName() + " hit the dice to move");
+                //JOptionPane.showMessageDialog(null, "Your go " + playerArray[y].getName() + " hit the dice to move");
 
 
+                if (dice==1){one.setVisible(true);
+                    //two.setVisible(false);;
+                    }
 
-                pos = SnL.dice(playerArray[y].getPosition(), dice, newBoard.getSpaces());
+                spacePanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
+/*.gridPanelArray[y]*/
+                pos = SnL.dice(playerArray[y].getPosition(), dice);
 
-                spacePanelArray[pos-dice]/*.gridPanelArray[y]*/.setBackground(Color.orange);
+
 
                 if (playerArray[y].getColour().equals("yellow")){
                     spacePanelArray[pos]/*.gridPanelArray[y]*/.setBackground(Color.yellow);
@@ -240,7 +258,7 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
 
 
 
-                if (pos == 35) {
+                if (pos == 0) {
 
                     win = true;
 

@@ -8,23 +8,21 @@ public class SnL {
 
 
 
-    public static int dice(int p, int dice, int z) {
+    public static int dice(int p, int dice) {
 
 
 
-        if (p+dice < z){
+        if (p-dice < 0){
 
-            p += dice;
+            p -= dice;
 
-            if(p+dice ==z){
+        }
 
 
-            }
 
-            }
-            else if (p+dice > z){
+            else if (p-dice < 0){
                 JOptionPane.showMessageDialog((Component)null, "you've gotten " +(dice)+ " too high try again");
-                p= (z*2)-(p+dice);
+                p= (p-dice)*(-1);
 
             } return p;
             }
@@ -115,7 +113,7 @@ public class SnL {
        boolean correct=false;
 
         while(!correct){
-        for (int z = 9; z > 4; z--) {
+        for (int z = 9; z >= 5; z--) {
 
 
             if((b%z) == 0){
@@ -144,7 +142,7 @@ public static int retriveXaxis(int b,int x){
 
 int z;
 
-            for (z = 9; z > 5; z--) {
+            for (z = 9; z >= 5; z--) {
 
 
                 if((b%z) == 0){
