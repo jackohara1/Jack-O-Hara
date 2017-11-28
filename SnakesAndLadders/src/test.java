@@ -110,13 +110,14 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
         JFrame frame2= new JFrame("snakes and ladders");
         frame2.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame2.setVisible(true);
-        //frame2.setSize(newBoard.getXaxis()*200,newBoard.getYaxis()*200);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        frame2.setSize(screenSize.width, screenSize.height);
         frame2.setLayout(new GridLayout(newBoard.getXaxis(),(newBoard.getYaxis()+1)));
 
-        ImageIcon diceimage =new ImageIcon("src\\images\\one.png");
-        JButton one = new JButton(diceimage);
 
-        one.setSize(1/10,1/10);
+
+
+
 
 
         ImageIcon snakeheadimg = new ImageIcon("src\\images\\snakehead.png");
@@ -131,44 +132,44 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
         int pos, s=newBoard.getSpaces(),w=0;
         JPanel[] spacePanelArray = new JPanel[100];
 
-        for(int q=0; q<=newBoard.getYaxis();q++){
+        for(int q=1; q<=newBoard.getYaxis();q++){
 
-            for(int x=0; x<newBoard.getXaxis();x++){
+            for(int x=1; x<=newBoard.getXaxis();x++){
 
                 spacePanelArray[w] = new JPanel();
 
               //  if(q % 2 == 0){
-                    spacePanelArray[w].setLocation(x, q+1);
+                    spacePanelArray[w].setLocation(x, q);
                     spacePanelArray[w].setBackground(Color.cyan);
                     JTextArea spacetext = new JTextArea();
                     spacetext.setText(""+(s)+"");
                     spacetext.setBackground(Color.cyan);
-                    spacePanelArray[w].add(spacetext);
-                    spacePanelArray[w].setLayout(new GridLayout(2, 2));
 
 
-               /*if ((int)(newBoard.getSpaces()*.3)==s){spacePanelArray[w].add(laddertail);}
-                if ((int)(newBoard.getSpaces()*.52)==s){spacePanelArray[w].add(ladderhead);}
 
-                if ((int)(newBoard.getSpaces()*.62)==s){spacePanelArray[w].add(snakehead);}
-                if ((int)(newBoard.getSpaces()*.42)==s){spacePanelArray[w].add(snaketail);}
+               if ((int)(newBoard.getSpaces()*.3)==s){spacePanelArray[w].add(laddertail);}
+                else if ((int)(newBoard.getSpaces()*.52)==s){spacePanelArray[w].add(ladderhead);}
 
-                if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.67)==w){spacePanelArray[w].add(laddertail);}
-                if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.86)==w){spacePanelArray[w].add(ladderhead);}
+                else if ((int)(newBoard.getSpaces()*.62)==s){spacePanelArray[w].add(snakehead);}
+                else if ((int)(newBoard.getSpaces()*.42)==s){spacePanelArray[w].add(snaketail);}
 
-                if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.32)==w){spacePanelArray[w].add(snakehead);}
-                if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.21)==w){spacePanelArray[w].add(snaketail);}
+                else if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.67)==w){spacePanelArray[w].add(laddertail);}
+                else if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.86)==w){spacePanelArray[w].add(ladderhead);}
 
-                if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.57)==w){spacePanelArray[w].add(laddertail);}
-                if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.72)==w){spacePanelArray[w].add(ladderhead);}
+                else if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.32)==w){spacePanelArray[w].add(snakehead);}
+                else if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.21)==w){spacePanelArray[w].add(snaketail);}
 
-                if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.91)==w){spacePanelArray[w].add(snakehead);}
-                if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.66)==w){spacePanelArray[w].add(snaketail);}
+                else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.57)==w){spacePanelArray[w].add(laddertail);}
+                else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.72)==w){spacePanelArray[w].add(ladderhead);}
 
-                if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.12)==w){spacePanelArray[w].add(laddertail);}
-                if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.29)==w){spacePanelArray[w].add(ladderhead);}*/
+                else if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.91)==w){spacePanelArray[w].add(snakehead);}
+                else if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.66)==w){spacePanelArray[w].add(snaketail);}
 
+                else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.12)==w){spacePanelArray[w].add(laddertail);}
+                else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.29)==w){spacePanelArray[w].add(ladderhead);}
 
+                else { spacePanelArray[w].add(spacetext);}
+                spacePanelArray[w].setLayout(new GridLayout(2, 2));
 
 
 
@@ -195,11 +196,12 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
                 s--;
                 w++;
             }}
-            one.setLocation(1,1);
-        frame2.add(one);
+
 
         boolean win = false;
         Random rand = new Random();
+
+        ImageIcon one =new ImageIcon("src\\images\\one.png");
         ImageIcon two =new ImageIcon("src\\images\\two.png");
         ImageIcon three =new ImageIcon("src\\images\\three.png");
         ImageIcon four =new ImageIcon("src\\images\\four.png");
@@ -210,20 +212,43 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
 
 
 
-            for (int y = 0; y < newBoard.getSpaces(); y++) {
+            for (int y = 0; y < amount; y++) {
+
 
                 int dice = rand.nextInt(6) + 1;
 
-                //JOptionPane.showMessageDialog(null, "Your go " + playerArray[y].getName() + " hit the dice to move");
+              if (dice==1) { JOptionPane.showMessageDialog(null,
+                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is"+(playerArray[y].getPosition()-dice),
+                         "Dice",JOptionPane.INFORMATION_MESSAGE,
+                        one);}//https://stackoverflow.com/questions/13963392/add-image-to-joptionpane
+                if (dice==2) { JOptionPane.showMessageDialog(null,
+                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is"+(playerArray[y].getPosition()-dice),
+                        "Dice",JOptionPane.INFORMATION_MESSAGE,
+                        two);}
+                if (dice==3) { JOptionPane.showMessageDialog(null,
+                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is"+(playerArray[y].getPosition()-dice),
+                        "Dice",JOptionPane.INFORMATION_MESSAGE,
+                        three);}
+                if (dice==4) { JOptionPane.showMessageDialog(null,
+                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is"+(playerArray[y].getPosition()-dice),
+                        "Dice",JOptionPane.INFORMATION_MESSAGE,
+                        four);}
+                if (dice==5) { JOptionPane.showMessageDialog(null,
+                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is"+(playerArray[y].getPosition()-dice),
+                        "Dice",JOptionPane.INFORMATION_MESSAGE,
+                        five);}
+                if (dice==6) { JOptionPane.showMessageDialog(null,
+                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is"+(playerArray[y].getPosition()-dice),
+                        "Dice",JOptionPane.INFORMATION_MESSAGE,
+                        six);}
 
 
-                if (dice==1){one.setVisible(true);
-                    //two.setVisible(false);;
-                    }
 
-                spacePanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
+
+                //spacePanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
 /*.gridPanelArray[y]*/
-                pos = SnL.dice(playerArray[y].getPosition(), dice);
+                pos=playerArray[y].getPosition();
+                pos = SnL.dice(pos, dice);
 
 
 
@@ -240,21 +265,21 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
                     spacePanelArray[pos]/*.gridPanelArray[y]*/.setBackground(Color.red);
                 }
 
-                pos=SnL.ladder1(pos,newBoard.getSpaces());
+                if (pos == (int)(newBoard.getSpaces()*.3)) {pos=SnL.ladder1(pos,newBoard.getSpaces());}
 
-                pos=SnL.snake1(pos,newBoard.getSpaces());
+                if (pos == (int)(newBoard.getSpaces()*.62)) { pos=SnL.snake1(pos,newBoard.getSpaces());}
 
-                if (newBoard.getYaxis()>=4){ pos=SnL.ladder2(pos,newBoard.getSpaces());}
+                if (newBoard.getYaxis()>=4&&(pos == (int)(newBoard.getSpaces()*.69))){ pos=SnL.ladder2(pos,newBoard.getSpaces());}
 
-                if (newBoard.getYaxis()>=5){ pos=SnL.snake2(pos,newBoard.getSpaces());}
+                if (newBoard.getYaxis()>=5&&(pos == (int)(newBoard.getSpaces()*.37))){ pos=SnL.snake2(pos,newBoard.getSpaces());}
 
-                if (newBoard.getYaxis()>=6){ pos=SnL.ladder3(pos,newBoard.getSpaces());}
+                if (newBoard.getYaxis()>=6&&(pos == (int)(newBoard.getSpaces()*.57))){ pos=SnL.ladder3(pos,newBoard.getSpaces());}
 
-                if (newBoard.getYaxis()>=7){ pos=SnL.snake3(pos,newBoard.getSpaces());}
+                if (newBoard.getYaxis()>=7&&(pos == (int)(newBoard.getSpaces()*.91))){ pos=SnL.snake3(pos,newBoard.getSpaces());}
 
-                if (newBoard.getYaxis()>=8){ pos=SnL.ladder4(pos,newBoard.getSpaces());}
+                if (newBoard.getYaxis()>=8&&(pos == (int)(newBoard.getSpaces()*.17))){ pos=SnL.ladder4(pos,newBoard.getSpaces());}
 
-                playerArray[y].setPosition(pos);
+
 
 
 
@@ -265,6 +290,8 @@ System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYa
                     JOptionPane.showMessageDialog((Component) null, "congradulations " + playerArray[y].getName() + "you won");
 
                     break;
-                }//end of wining if statement
+                }
+                playerArray[y].setPosition(pos);
+                //end of wining if statement
     }
 }}}

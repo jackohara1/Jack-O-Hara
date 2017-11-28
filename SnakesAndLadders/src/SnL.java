@@ -30,19 +30,19 @@ public class SnL {
             public static int ladder1 (int p, int z)
             {
 
-                        if (p == (int)(z*.3)) {
-                            p = (int)(z*.52);
+
+                            p =(int)(z*.52);
                             JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
-                        }        return p;
+                                return p;
             }
 
     public static int snake1 (int p, int z)
     {
 
-                        if (p == (int)(z*.62)) {
+
                             p = (int)(z*.42);
                             JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
-                        }
+
                         return p;
             }
 
@@ -50,10 +50,10 @@ public class SnL {
     {
 
 
-                        if (p == (int)(z*.69)) {
+
                             p = (int)(z*.86);
                             JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
-                        }
+
                 return p;
             }
 
@@ -62,10 +62,10 @@ public class SnL {
 
 
              {
-                        if (p == (int)(z*.37)) {
+
                             p = (int)(z*.21);
                             JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
-                        }
+
 
             }        return p;
         }
@@ -74,20 +74,20 @@ public class SnL {
     {
             {
 
-                if (p == (int)(z*.57)) {
+
                     p = (int)(z*.72);
                     JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
-                }
+
             }        return p;
     }
 
     public static int snake3 (int p, int z)
     {
              {
-                if (p == (int)(z*.91)) {
+
                     p = (int)(z*.66);
                     JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
-                }
+
 
             }        return p;
     }
@@ -96,10 +96,10 @@ public class SnL {
     {
            {
 
-               if (p == (int)(z*.17)) {
+
                    p = (int)(z*.29);
                    JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
-                    }
+
 
                 }  return p;    }
 
