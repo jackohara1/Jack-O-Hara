@@ -31,8 +31,8 @@ public class SnL {
             {
 
 
-                            p =(int)(z*.52);
-                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
+                            p =(int)(z*.48);
+                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder");
                                 return p;
             }
 
@@ -40,8 +40,8 @@ public class SnL {
     {
 
 
-                            p = (int)(z*.42);
-                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
+                            p = (int)(z*.58);
+                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake");
 
                         return p;
             }
@@ -51,8 +51,8 @@ public class SnL {
 
 
 
-                            p = (int)(z*.86);
-                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
+                            p = (int)(z*.14);
+                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder");
 
                 return p;
             }
@@ -63,8 +63,8 @@ public class SnL {
 
              {
 
-                            p = (int)(z*.21);
-                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
+                            p = (int)(z*.79);
+                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake");
 
 
             }        return p;
@@ -75,8 +75,8 @@ public class SnL {
             {
 
 
-                    p = (int)(z*.72);
-                    JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
+                    p = (int)(z*.28);
+                    JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder ");
 
             }        return p;
     }
@@ -85,8 +85,8 @@ public class SnL {
     {
              {
 
-                    p = (int)(z*.66);
-                    JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
+                    p = (int)(z*.44);
+                    JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake");
 
 
             }        return p;
@@ -97,8 +97,8 @@ public class SnL {
            {
 
 
-                   p = (int)(z*.29);
-                   JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
+                   p = (int)(z*.71);
+                   JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder");
 
 
                 }  return p;    }
