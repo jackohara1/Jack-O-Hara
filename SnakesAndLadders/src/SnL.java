@@ -32,7 +32,7 @@ public class SnL {
 
 
                             p =(int)(z*.48);
-                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder");
+                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
                                 return p;
             }
 
@@ -41,7 +41,7 @@ public class SnL {
 
 
                             p = (int)(z*.58);
-                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake");
+                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
 
                         return p;
             }
@@ -52,7 +52,7 @@ public class SnL {
 
 
                             p = (int)(z*.14);
-                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder");
+                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
 
                 return p;
             }
@@ -64,7 +64,7 @@ public class SnL {
              {
 
                             p = (int)(z*.79);
-                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake");
+                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
 
 
             }        return p;
@@ -76,7 +76,7 @@ public class SnL {
 
 
                     p = (int)(z*.28);
-                    JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder ");
+                    JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
 
             }        return p;
     }
@@ -85,8 +85,8 @@ public class SnL {
     {
              {
 
-                    p = (int)(z*.44);
-                    JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake");
+                    p = (int)(z*.66);
+                    JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
 
 
             }        return p;
@@ -97,8 +97,8 @@ public class SnL {
            {
 
 
-                   p = (int)(z*.71);
-                   JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder");
+                   p = (int)(z*.29);
+                   JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
 
 
                 }  return p;    }
@@ -170,5 +170,58 @@ int z;
 
         return y;
     }
+    public static String colourValidation1(String colour){
 
+        while (!colour.equals("B") && !colour.equals("R") && !colour.equals("Y") && !colour.equals("G")) {
+
+
+
+            colour = JOptionPane.showInputDialog("The Colour you entered is not a valid colour" +
+                    "Enter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();
+
+
+
+        } return colour;}
+
+    public static String colourValidation2(String colour, String p1colour){
+
+        while (!colour.equals("B") && !colour.equals("R") && !colour.equals("Y") && !colour.equals("G") ||
+        colour.equals(p1colour)) {
+
+
+
+            colour = JOptionPane.showInputDialog("The Colour you entered is not valid either because it is not one of the colours avalible or\n" +
+                    "One of the players before you has picked that colour\n" +
+                    "Enter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();
+
+        }
+    return colour;}
+
+    public static String colourValidation3(String colour, String p1colour, String p2colour){
+
+        while (!colour.equals("B") && !colour.equals("R") && !colour.equals("Y") && !colour.equals("G") ||
+       colour.equals(p1colour)|| colour.equals(p2colour)) {
+
+
+
+            colour = JOptionPane.showInputDialog("The Colour you entered is not valid either because it is not one of the colours avalible or\n" +
+                    "One of the players before you has picked that colour\n" +
+                    "Enter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();
+
+        }
+    return colour;}
+
+    public static String colourValidation4(String colour, String p1colour, String p2colour, String p3colour){
+
+        while (!colour.equals("B") && !colour.equals("R") && !colour.equals("Y") && !colour.equals("G") ||
+        colour.equals(p1colour) || colour.equals(p2colour)||
+                colour.equals(p3colour)) {
+
+
+            colour = JOptionPane.showInputDialog("The Colour you entered is not valid either because it is not one of the colours avalible or\n" +
+                    "One of the players before you has picked that colour\n" +
+                    "Enter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();
+
+        }
+    return colour;}
 }

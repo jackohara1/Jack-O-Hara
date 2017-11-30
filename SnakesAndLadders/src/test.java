@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 import java.util.Random;
 
-public class test extends JFrame{
+public class test extends JFrame {
     public static void main(String[] args) {
 
         boardSetUp newBoard = new boardSetUp();
@@ -63,29 +63,30 @@ public class test extends JFrame{
             colourChoice = JOptionPane.showInputDialog("Enter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();
 
 
+            if (x==0) { colourChoice=SnL.colourValidation1(colourChoice);}
+            if (x==1) { colourChoice=SnL.colourValidation2(colourChoice,playerArray[0].getColour());}
+            if (x==2) { colourChoice=SnL.colourValidation3(colourChoice,playerArray[0].getColour(), playerArray[1].getColour());}
+            if (x==3) { colourChoice=SnL.colourValidation4(colourChoice,playerArray[0].getColour(), playerArray[1].getColour(), playerArray[2].getColour());}
 
-            while (!colourChoice.equals("B") && !colourChoice.equals("R") && !colourChoice.equals("Y") && !colourChoice.equals("G")) {
 
+                if (x>=2)
 
-
-                colourChoice = JOptionPane.showInputDialog("That is not one of the letters\nEnter colour 'B' blue, 'R' red, 'Y' yellow, 'G' green ").toUpperCase();
-
-            }//validation for colour
+           //validation for colour
 
             if (colourChoice.equals("B")) {
-                colourChoice = "blue";
+                colourChoice = "B";
             }
 
             if (colourChoice.equals("R")) {
-                colourChoice = "red";
+                colourChoice = "R";
             }
 
             if (colourChoice.equals("Y")) {
-                colourChoice = "yellow";
+                colourChoice = "Y";
             }
 
             if (colourChoice.equals("G")) {
-                colourChoice = "green";
+                colourChoice = "G";
             }
 
 
@@ -101,124 +102,11 @@ public class test extends JFrame{
 
 
 
+   displayBoard d = new displayBoard(newBoard);
 
 
 
 
-        System.out.println(newBoard.getSpaces()+""+newBoard.getXaxis()+""+newBoard.getYaxis());
-
-        JFrame frame2= new JFrame();
-        frame2.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame2.setSize(screenSize.width, screenSize.height);
-        frame2.setLayout(new GridLayout(newBoard.getXaxis(),(newBoard.getYaxis()*2)));
-
-
-
-
-
-        ImageIcon snakeheadimg = new ImageIcon("src\\images\\snakehead.png");
-        ImageIcon snaketailimg = new ImageIcon("src\\images\\snaketail.png");
-        ImageIcon ladderheadimg = new ImageIcon("src\\images\\ladderhead.png");
-        ImageIcon laddertailimg = new ImageIcon("src\\images\\laddertail.jpg");
-        ImageIcon redimg = new ImageIcon("src\\images\\red.png");
-        ImageIcon yellowimg = new ImageIcon("src\\images\\yellow.png");
-        ImageIcon greenimg = new ImageIcon("src\\images\\green.png");
-        ImageIcon blueimg = new ImageIcon("src\\images\\blue.png");
-
-
-
-
-        int s=newBoard.getSpaces(),w=0;
-        JPanel[] spacePanelArray = new JPanel[100];
-        JPanel[] playerPanelArray =new JPanel[100];
-        for(int q=1; q<=newBoard.getYaxis();q++){
-
-            for(int x=1; x<=newBoard.getXaxis()*2;x=x+2){
-                playerPanelArray[w] = new JPanel();
-                playerPanelArray[w].setLocation(x, q);
-                playerPanelArray[w].setBackground(Color.cyan);
-
-                spacePanelArray[w] = new JPanel();
-
-                //  if(q % 2 == 0){
-                spacePanelArray[w].setLocation(x, q+1);
-                spacePanelArray[w].setBackground(Color.cyan);
-                JTextArea spacetext = new JTextArea();
-                spacetext.setText(""+(s)+"");
-                spacetext.setBackground(Color.cyan);
-
-
-
-                JLabel laddertail = new JLabel(laddertailimg);
-                JLabel ladderhead = new JLabel(ladderheadimg);
-                JLabel snaketail = new JLabel(snaketailimg);
-                JLabel snakehead = new JLabel(snakeheadimg);
-
-
-                //  spacePanelArray[w].setLayout(new FlowLayout);
-
-
-
-
-
-
-
-
-                if ((int)(newBoard.getSpaces()*.3)==s){spacetext.setText(""+(s)+"   l1"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(laddertail);
-                }
-                else if ((int)(newBoard.getSpaces()*.52)==s){spacetext.setText(""+(s)+" l1"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(ladderhead);
-                }
-
-                else if ((int)(newBoard.getSpaces()*.62)==s){spacetext.setText(""+(s)+" s1"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snakehead);
-                }
-                else if ((int)(newBoard.getSpaces()*.42)==s){spacetext.setText(""+(s)+" s1"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snaketail);
-                }
-
-                else if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.67)==s){spacetext.setText(""+(s)+" l2"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(laddertail);
-                }
-                else if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.86)==s){spacetext.setText(""+(s)+" l2"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(ladderhead);
-                }
-
-                else if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.32)==s){spacetext.setText(""+(s)+" s2"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snakehead);
-                }
-                else if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.21)==s){spacetext.setText(""+(s)+" s2"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snaketail);
-                }
-
-                else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.57)==s){spacetext.setText(""+(s)+" l3"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(laddertail);
-                }
-                else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.72)==s){spacetext.setText(""+(s)+" l3"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(ladderhead);
-                }
-
-                else if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.91)==s){spacetext.setText(""+(s)+" s3"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snakehead);
-                }
-                else if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.66)==s){spacetext.setText(""+(s)+" s3"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snaketail);
-                }
-
-                else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.17)==s){spacetext.setText(""+(s)+" l4"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(laddertail);
-                }
-                else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.29)==s){spacetext.setText(""+(s)+" l4"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(ladderhead);
-                }
-
-                else{ spacetext.setText(""+(s)+""); spacePanelArray[w].add(spacetext); }
-
-
-
-
-
-
-
-
-
-                if (s==0){break;}
-
-                frame2.add(playerPanelArray[w]);
-                frame2.add(spacePanelArray[w]);
-
-                s--;
-                w++;
-            }}
 
 
 
@@ -236,7 +124,7 @@ public class test extends JFrame{
         ImageIcon five =new ImageIcon("src\\images\\five.png");
         ImageIcon six =new ImageIcon("src\\images\\six.png");
 
-        frame2.setVisible(true);
+
         while (!win) {
             int turn=0;
 
@@ -255,14 +143,14 @@ public class test extends JFrame{
                     System.exit(0);}
                 else if (pos < 0){
                     JOptionPane.showMessageDialog((Component)null, "you've gotten too high try again");
-                    playerPanelArray[pos+dice].setBackground(Color.cyan);
+                    displayBoard.playerPanelArray[pos+dice].setBackground(Color.cyan);
                     pos= (pos)*(-1); }
                 else
 
-                    if (dice==1) { JOptionPane.showMessageDialog(null,
-                            "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is "+(newBoard.getSpaces()-playerArray[y].getPosition()+dice),
-                            "Dice",JOptionPane.INFORMATION_MESSAGE,
-                            one);}//https://stackoverflow.com/questions/13963392/add-image-to-joptionpane
+                if (dice==1) { JOptionPane.showMessageDialog(null,
+                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is "+(newBoard.getSpaces()-playerArray[y].getPosition()+dice),
+                        "Dice",JOptionPane.INFORMATION_MESSAGE,
+                        one);}//https://stackoverflow.com/questions/13963392/add-image-to-joptionpane
                 if (dice==2) { JOptionPane.showMessageDialog(null,
                         "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is "+(newBoard.getSpaces()-playerArray[y].getPosition()+dice),
                         "Dice",JOptionPane.INFORMATION_MESSAGE,
@@ -287,58 +175,56 @@ public class test extends JFrame{
 
 
 
-                if (playerArray[y].getPosition()< newBoard.getSpaces()){playerPanelArray[pos+dice].setBackground(Color.cyan);}
-
-
-                //     pos = SnL.dice(pos, dice);
+                if (playerArray[y].getPosition()< newBoard.getSpaces()){displayBoard.playerPanelArray[pos+dice].setBackground(Color.cyan);}
 
 
 
 
 
 
-                if (playerArray[y].getColour().equals("yellow")&&pos<newBoard.getSpaces()){
 
-                    playerPanelArray[pos].setBackground(Color.yellow);
 
-                }
-                else if (playerArray[y].getColour().equals("green")&&pos<newBoard.getSpaces()){
 
-                    playerPanelArray[pos].setBackground(Color.green);
+                if (playerArray[y].getColour().equals("Y")&&pos<newBoard.getSpaces()){
+
+                    displayBoard.playerPanelArray[pos].setBackground(Color.yellow);
 
                 }
-                else if (playerArray[y].getColour().equals("blue")&&pos<newBoard.getSpaces()){
+                else if (playerArray[y].getColour().equals("G")&&pos<newBoard.getSpaces()){
 
-                    playerPanelArray[pos].setBackground(Color.blue);
+                    displayBoard.playerPanelArray[pos].setBackground(Color.green);
+
+                }
+                else if (playerArray[y].getColour().equals("B")&&pos<newBoard.getSpaces()){
+
+                    displayBoard.playerPanelArray[pos].setBackground(Color.blue);
 
                 }
 
-                else if (playerArray[y].getColour().equals("red")&&pos<newBoard.getSpaces()){
+                else if (playerArray[y].getColour().equals("R")&&pos<newBoard.getSpaces()){
 
-                    playerPanelArray[pos].setBackground(Color.red);
+                    displayBoard.playerPanelArray[pos].setBackground(Color.red);
                 }
 
                /* for (int c=0; c<amount; c++){
                     if(playerArray[c].getPosition()==playerArray[y].getPosition()&& y!=c && playerArray[y].getPosition()!=newBoard.getSpaces()) {
-
                         playerArray[c].setPosition(playerArray[c].getPosition()+dice);
-                        if (playerArray[c].getColour().equals("yellow")){
+                        if (playerArray[c].getColour().equals("Y")){
                             playerPanelArray[pos+dice].setBackground(Color.yellow);
                             JOptionPane.showMessageDialog((Component)null, "you've landed on the same spot as " +playerArray[c].getName()+ "\n"+playerArray[c].getName()+
                                     " you have to go to space "+(newBoard.getSpaces()-playerArray[c].getPosition()));
                         }
-                        else if (playerArray[c].getColour().equals("green") ){
+                        else if (playerArray[c].getColour().equals("G") ){
                             playerPanelArray[pos+dice].setBackground(Color.green);
                             JOptionPane.showMessageDialog((Component)null, "you've landed on the same spot as " +playerArray[c].getName()+ "\n"+playerArray[c].getName()+
                                     " you have to go to space "+(newBoard.getSpaces()-playerArray[c].getPosition()));
                         }
-                        else if (playerArray[c].getColour().equals("blue")){
+                        else if (playerArray[c].getColour().equals("B")){
                             playerPanelArray[pos+dice].setBackground(Color.blue);
                             JOptionPane.showMessageDialog((Component)null, "you've landed on the same spot as " +playerArray[c].getName()+ "\n"+playerArray[c].getName()+
                                     " you have to go to space "+(newBoard.getSpaces()-playerArray[c].getPosition()));
                         }
-
-                        else if (playerArray[c].getColour().equals("red")){
+                        else if (playerArray[c].getColour().equals("R")){
                             playerPanelArray[pos+dice].setBackground(Color.red);
                             JOptionPane.showMessageDialog((Component)null, "you've landed on the same spot as " +playerArray[c].getName()+ "\n"+playerArray[c].getName()+
                                     " you have to go to space "+(newBoard.getSpaces()-playerArray[c].getPosition()));
@@ -355,67 +241,67 @@ public class test extends JFrame{
                 if (pos == (int)(newBoard.getSpaces()*.7)) {
 
                     pos=SnL.ladder1(pos,newBoard.getSpaces());
-                    playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
+                    displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
                     playerArray[y].setPosition(pos); }
 
                 if (pos == (int)(newBoard.getSpaces()*.38)) {
 
-                     pos=SnL.snake1(pos,newBoard.getSpaces());
-                     playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
+                    pos=SnL.snake1(pos,newBoard.getSpaces());
+                    displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
                     playerArray[y].setPosition(pos);}
 
                 if (newBoard.getYaxis()>=4&&(pos == (int)(newBoard.getSpaces()*.33))){
 
                     pos=SnL.ladder2(pos,newBoard.getSpaces());
-                    playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
+                    displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
                     playerArray[y].setPosition(pos);}
 
                 if (newBoard.getYaxis()>=5&&(pos == (int)(newBoard.getSpaces()*.73))){
 
                     pos=SnL.snake2(pos,newBoard.getSpaces());
-                    playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
+                    displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
                     playerArray[y].setPosition(pos);}
 
                 if (newBoard.getYaxis()>=6&&(pos == (int)(newBoard.getSpaces()*.43))){
 
                     pos=SnL.ladder3(pos,newBoard.getSpaces());
-                    playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
+                    displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
                     playerArray[y].setPosition(pos);}
 
                 if (newBoard.getYaxis()>=7&&(pos == (int)(newBoard.getSpaces()*.09))){
 
                     pos=SnL.snake3(pos,newBoard.getSpaces());
-                    playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
+                    displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
                     playerArray[y].setPosition(pos);}
 
                 if (newBoard.getYaxis()>=8&&(pos == (int)(newBoard.getSpaces()*.83))){
 
                     pos=SnL.ladder4(pos,newBoard.getSpaces());
-                    playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
+                    displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
                     playerArray[y].setPosition(pos);
                 }
 
 
 
-                if (playerArray[y].getColour().equals("yellow")&&pos<newBoard.getSpaces()){
+                if (playerArray[y].getColour().equals("Y")&&pos<newBoard.getSpaces()){
 
-                    playerPanelArray[pos].setBackground(Color.yellow);
-
-                }
-                else if (playerArray[y].getColour().equals("green")&&pos<newBoard.getSpaces()){
-
-                    playerPanelArray[pos].setBackground(Color.green);
+                    displayBoard.playerPanelArray[pos].setBackground(Color.yellow);
 
                 }
-                else if (playerArray[y].getColour().equals("blue")&&pos<newBoard.getSpaces()){
+                else if (playerArray[y].getColour().equals("G")&&pos<newBoard.getSpaces()){
 
-                    playerPanelArray[pos].setBackground(Color.blue);
+                    displayBoard.playerPanelArray[pos].setBackground(Color.green);
+
+                }
+                else if (playerArray[y].getColour().equals("B")&&pos<newBoard.getSpaces()){
+
+                    displayBoard.playerPanelArray[pos].setBackground(Color.blue);
 
                 }
 
-                else if (playerArray[y].getColour().equals("red")&&pos<newBoard.getSpaces()){
+                else if (playerArray[y].getColour().equals("R")&&pos<newBoard.getSpaces()){
 
-                    playerPanelArray[pos].setBackground(Color.red);
+                    displayBoard.playerPanelArray[pos].setBackground(Color.red);
                 }
 
 
@@ -428,3 +314,4 @@ public class test extends JFrame{
 
 
     }}
+
