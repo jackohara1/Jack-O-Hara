@@ -4,35 +4,17 @@ import javax.swing.JOptionPane;
 import java.applet.Applet;
 public class SnL {
     public SnL() {
+
+
     }
 
-
-
-    public static int dice(int p, int dice) {
-
-
-
-        if (p-dice < 0){
-
-            p -= dice;
-
-        }
-
-
-
-            else if (p-dice < 0){
-                JOptionPane.showMessageDialog((Component)null, "you've gotten " +(dice)+ " too high try again");
-                p= (p-dice)*(-1);
-
-            } return p;
-            }
 
             public static int ladder1 (int p, int z)
             {
 
 
                             p =(int)(z*.48);
-                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
+                JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder","ladder",JOptionPane.PLAIN_MESSAGE,displayBoard.laddertailimg);
                                 return p;
             }
 
@@ -41,7 +23,7 @@ public class SnL {
 
 
                             p = (int)(z*.58);
-                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
+        JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake","snake",JOptionPane.PLAIN_MESSAGE,displayBoard.snakeheadimg);
 
                         return p;
             }
@@ -52,7 +34,7 @@ public class SnL {
 
 
                             p = (int)(z*.14);
-                            JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
+        JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder","ladder",JOptionPane.PLAIN_MESSAGE,displayBoard.laddertailimg);
 
                 return p;
             }
@@ -64,7 +46,7 @@ public class SnL {
              {
 
                             p = (int)(z*.79);
-                            JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
+                 JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake","snake",JOptionPane.PLAIN_MESSAGE,displayBoard.snakeheadimg);
 
 
             }        return p;
@@ -76,32 +58,32 @@ public class SnL {
 
 
                     p = (int)(z*.28);
-                    JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
+                JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder","ladder",JOptionPane.PLAIN_MESSAGE,displayBoard.laddertailimg);
 
             }        return p;
     }
 
     public static int snake3 (int p, int z)
     {
-             {
-
-                    p = (int)(z*.66);
-                    JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake your new score is " + p);
 
 
-            }        return p;
+                    p = (int)(z*.34);
+        JOptionPane.showMessageDialog((Component)null, "Oh no you went down the snake","snake",JOptionPane.PLAIN_MESSAGE,displayBoard.snakeheadimg);
+
+
+                  return p;
     }
 
     public static int ladder4 (int p, int z)
     {
-           {
 
 
-                   p = (int)(z*.29);
-                   JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder your new score is " + p);
+
+                   p = (int)(z*.72);
+                   JOptionPane.showMessageDialog((Component)null, "Wohoo you went up the ladder","ladder",JOptionPane.PLAIN_MESSAGE,displayBoard.laddertailimg);
 
 
-                }  return p;    }
+                  return p;    }
 
 
 
@@ -142,7 +124,7 @@ public static int retriveXaxis(int b,int x){
 
 int z;
 
-            for (z = 9; z >= 5; z--) {
+            for (z = 10; z >= 5; z--) {
 
 
                 if((b%z) == 0){

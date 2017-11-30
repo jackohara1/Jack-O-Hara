@@ -18,6 +18,9 @@ public class test extends JFrame {
 
 
 
+
+
+
         boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
 
         while (boardsize > 100 || boardsize < 20) {
@@ -30,9 +33,9 @@ public class test extends JFrame {
 
             }//if boardsize
 
-            if (boardsize < 20) {
+            if (boardsize < 40) {
 
-                JOptionPane.showMessageDialog(null, "im sorry but you have to enter more squares the minimum amount is 20", "error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "im sorry but you have to enter more squares the minimum amount is 40", "error", JOptionPane.ERROR_MESSAGE);
 
                 boardsize = Integer.parseInt(JOptionPane.showInputDialog("Please enter how many squares youd like on your board"));
 
@@ -123,7 +126,7 @@ public class test extends JFrame {
         ImageIcon four =new ImageIcon("src\\images\\four.png");
         ImageIcon five =new ImageIcon("src\\images\\five.png");
         ImageIcon six =new ImageIcon("src\\images\\six.png");
-
+        ImageIcon winner =new ImageIcon("src\\images\\win.png");
 
         while (!win) {
             int turn=0;
@@ -139,39 +142,53 @@ public class test extends JFrame {
 
                 int dice = rand.nextInt(6) + 1,pos=playerArray[y].getPosition();
                 pos=pos-dice;
-                if (pos==0){ JOptionPane.showMessageDialog((Component)null, "You got "+dice+" Congradulations you have won "+playerArray[y].getName());
+                if (pos==0){ JOptionPane.showMessageDialog((Component)null, "You got "+dice+" Congratulations you have won "+playerArray[y].getName(),"winner",JOptionPane.PLAIN_MESSAGE,winner);
                     System.exit(0);}
+
+                else if (pos > 0) {
+
+                    if (dice == 1) {
+                        JOptionPane.showMessageDialog(null,
+                                "Your go " + playerArray[y].getName() + " you got " + dice + " your new score is " + (newBoard.getSpaces() - playerArray[y].getPosition() + dice),
+                                "Dice", JOptionPane.INFORMATION_MESSAGE,
+                                one);
+                    }//https://stackoverflow.com/questions/13963392/add-image-to-joptionpane
+                    if (dice == 2) {
+                        JOptionPane.showMessageDialog(null,
+                                "Your go " + playerArray[y].getName() + " you got " + dice + " your new score is " + (newBoard.getSpaces() - playerArray[y].getPosition() + dice),
+                                "Dice", JOptionPane.INFORMATION_MESSAGE,
+                                two);
+                    }
+                    if (dice == 3) {
+                        JOptionPane.showMessageDialog(null,
+                                "Your go " + playerArray[y].getName() + " you got " + dice + " your new score is " + (newBoard.getSpaces() - playerArray[y].getPosition() + dice),
+                                "Dice", JOptionPane.INFORMATION_MESSAGE,
+                                three);
+                    }
+                    if (dice == 4) {
+                        JOptionPane.showMessageDialog(null,
+                                "Your go " + playerArray[y].getName() + " you got " + dice + " your new score is " + (newBoard.getSpaces() - playerArray[y].getPosition() + dice),
+                                "Dice", JOptionPane.INFORMATION_MESSAGE,
+                                four);
+                    }
+                    if (dice == 5) {
+                        JOptionPane.showMessageDialog(null,
+                                "Your go " + playerArray[y].getName() + " you got " + dice + " your new score is " + (newBoard.getSpaces() - playerArray[y].getPosition() + dice),
+                                "Dice", JOptionPane.INFORMATION_MESSAGE,
+                                five);
+                    }
+                    if (dice == 6) {
+                        JOptionPane.showMessageDialog(null,
+                                "Your go " + playerArray[y].getName() + " you got " + dice + " your new score is " + (newBoard.getSpaces() - playerArray[y].getPosition() + dice),
+                                "Dice", JOptionPane.INFORMATION_MESSAGE,
+                                six);
+                    }
+
+                }
                 else if (pos < 0){
                     JOptionPane.showMessageDialog((Component)null, "you've gotten too high try again");
                     displayBoard.playerPanelArray[pos+dice].setBackground(Color.cyan);
                     pos= (pos)*(-1); }
-                else
-
-                if (dice==1) { JOptionPane.showMessageDialog(null,
-                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is "+(newBoard.getSpaces()-playerArray[y].getPosition()+dice),
-                        "Dice",JOptionPane.INFORMATION_MESSAGE,
-                        one);}//https://stackoverflow.com/questions/13963392/add-image-to-joptionpane
-                if (dice==2) { JOptionPane.showMessageDialog(null,
-                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is "+(newBoard.getSpaces()-playerArray[y].getPosition()+dice),
-                        "Dice",JOptionPane.INFORMATION_MESSAGE,
-                        two);}
-                if (dice==3) { JOptionPane.showMessageDialog(null,
-                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is "+(newBoard.getSpaces()-playerArray[y].getPosition()+dice),
-                        "Dice",JOptionPane.INFORMATION_MESSAGE,
-                        three);}
-                if (dice==4) { JOptionPane.showMessageDialog(null,
-                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is "+(newBoard.getSpaces()-playerArray[y].getPosition()+dice),
-                        "Dice",JOptionPane.INFORMATION_MESSAGE,
-                        four);}
-                if (dice==5) { JOptionPane.showMessageDialog(null,
-                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is "+(newBoard.getSpaces()-playerArray[y].getPosition()+dice),
-                        "Dice",JOptionPane.INFORMATION_MESSAGE,
-                        five);}
-                if (dice==6) { JOptionPane.showMessageDialog(null,
-                        "Your go " + playerArray[y].getName() + " you got "+dice+" your new score is "+(newBoard.getSpaces()-playerArray[y].getPosition()+dice),
-                        "Dice",JOptionPane.INFORMATION_MESSAGE,
-                        six);}
-
 
 
 
@@ -205,7 +222,7 @@ public class test extends JFrame {
 
                     displayBoard.playerPanelArray[pos].setBackground(Color.red);
                 }
-
+//my attempt to deal with two players landing on the same spot
                /* for (int c=0; c<amount; c++){
                     if(playerArray[c].getPosition()==playerArray[y].getPosition()&& y!=c && playerArray[y].getPosition()!=newBoard.getSpaces()) {
                         playerArray[c].setPosition(playerArray[c].getPosition()+dice);
@@ -242,44 +259,51 @@ public class test extends JFrame {
 
                     pos=SnL.ladder1(pos,newBoard.getSpaces());
                     displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
-                    playerArray[y].setPosition(pos); }
+                    playerArray[y].setPosition(pos);
+                }//changes the players position to they're position after the ladder
 
                 if (pos == (int)(newBoard.getSpaces()*.38)) {
 
                     pos=SnL.snake1(pos,newBoard.getSpaces());
                     displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
-                    playerArray[y].setPosition(pos);}
+                    playerArray[y].setPosition(pos);
+                }//changes the players position to they're position after the snake
 
                 if (newBoard.getYaxis()>=4&&(pos == (int)(newBoard.getSpaces()*.33))){
 
                     pos=SnL.ladder2(pos,newBoard.getSpaces());
                     displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
-                    playerArray[y].setPosition(pos);}
+                    playerArray[y].setPosition(pos);
+                }//changes the players position to they're position after the ladder
 
-                if (newBoard.getYaxis()>=5&&(pos == (int)(newBoard.getSpaces()*.73))){
+                if (newBoard.getYaxis()>=5&&(pos == (int)(newBoard.getSpaces()*.63))){
 
                     pos=SnL.snake2(pos,newBoard.getSpaces());
                     displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
-                    playerArray[y].setPosition(pos);}
+                    playerArray[y].setPosition(pos);
+                }//changes the players position to they're position after the snake
 
-                if (newBoard.getYaxis()>=6&&(pos == (int)(newBoard.getSpaces()*.43))){
+                if (newBoard.getYaxis()>=6&&(pos == (int)(newBoard.getSpaces()*.44))){
 
                     pos=SnL.ladder3(pos,newBoard.getSpaces());
                     displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
-                    playerArray[y].setPosition(pos);}
+                    playerArray[y].setPosition(pos);
+                }//changes the players position to they're position after the ladder
 
                 if (newBoard.getYaxis()>=7&&(pos == (int)(newBoard.getSpaces()*.09))){
 
                     pos=SnL.snake3(pos,newBoard.getSpaces());
                     displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
-                    playerArray[y].setPosition(pos);}
+                    playerArray[y].setPosition(pos);
+                }//changes the players position to they're position after the snake
 
                 if (newBoard.getYaxis()>=8&&(pos == (int)(newBoard.getSpaces()*.83))){
 
                     pos=SnL.ladder4(pos,newBoard.getSpaces());
                     displayBoard.playerPanelArray[playerArray[y].getPosition()].setBackground(Color.cyan);
                     playerArray[y].setPosition(pos);
-                }
+
+                }//changes the players position to they're position after the ladder
 
 
 
@@ -287,31 +311,33 @@ public class test extends JFrame {
 
                     displayBoard.playerPanelArray[pos].setBackground(Color.yellow);
 
-                }
+                }//changes the space that the player is on to the colour of the player
                 else if (playerArray[y].getColour().equals("G")&&pos<newBoard.getSpaces()){
 
                     displayBoard.playerPanelArray[pos].setBackground(Color.green);
 
-                }
+                }//changes the space that the player is on to the colour of the player
                 else if (playerArray[y].getColour().equals("B")&&pos<newBoard.getSpaces()){
 
                     displayBoard.playerPanelArray[pos].setBackground(Color.blue);
 
-                }
+                }//changes the space that the player is on to the colour of the player
 
                 else if (playerArray[y].getColour().equals("R")&&pos<newBoard.getSpaces()){
 
                     displayBoard.playerPanelArray[pos].setBackground(Color.red);
-                }
+
+                }//changes the space that the player is on to the colour of the player
 
 
 
 
 
-                turn++;         //end of wining if statement
-            }
-        }
+                turn++;
+            }//end of for loop that goes through the turns of all the players
+        }//end of while loop that loops every turn
 
 
-    }}
+    }//end of main
+}//end of class
 
