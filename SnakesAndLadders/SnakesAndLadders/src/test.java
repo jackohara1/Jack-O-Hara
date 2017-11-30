@@ -186,7 +186,7 @@ public class test extends JFrame {
 
                 }
                 else if (pos < 0){
-                    JOptionPane.showMessageDialog((Component)null, "you got "+dice+" your score is greater than the boardsize "+newBoard.getSpaces()+" you have been sent back");
+                    JOptionPane.showMessageDialog((Component)null, "you've gotten too high try again");
                     displayBoard.playerPanelArray[pos+dice].setBackground(Color.cyan);
                     pos= (pos)*(-1); }
 

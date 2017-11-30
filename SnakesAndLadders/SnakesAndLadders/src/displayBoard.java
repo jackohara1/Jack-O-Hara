@@ -73,37 +73,37 @@ public displayBoard(boardSetUp newBoard){
 
             if ((int)(newBoard.getSpaces()*.3)==s){spacetext.setText(""+(s)+"   l1"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(laddertail,BorderLayout.CENTER);
             }
-            else if ((int)(newBoard.getSpaces()*.52)==s){spacetext.setText(""+(s)+" l1"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(ladderhead, BorderLayout.CENTER);
+            else if ((int)(newBoard.getSpaces()*.52)==s){spacetext.setText(""+(s)+" l1"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(ladderhead);
             }
 
-            else if ((int)(newBoard.getSpaces()*.62)==s){spacetext.setText(""+(s)+" s1"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(snakehead, BorderLayout.CENTER);
+            else if ((int)(newBoard.getSpaces()*.62)==s){spacetext.setText(""+(s)+" s1"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snakehead);
             }
-            else if ((int)(newBoard.getSpaces()*.42)==s){spacetext.setText(""+(s)+" s1"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(snaketail, BorderLayout.CENTER);
-            }
-
-            else if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.67)==s){spacetext.setText(""+(s)+" l2"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(laddertail, BorderLayout.CENTER);
-            }
-            else if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.86)==s){spacetext.setText(""+(s)+" l2"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(ladderhead, BorderLayout.CENTER);
+            else if ((int)(newBoard.getSpaces()*.42)==s){spacetext.setText(""+(s)+" s1"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snaketail);
             }
 
-            else if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.37)==s){spacetext.setText(""+(s)+" s2"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(snakehead, BorderLayout.CENTER);
+            else if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.67)==s){spacetext.setText(""+(s)+" l2"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(laddertail);
             }
-            else if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.21)==s){spacetext.setText(""+(s)+" s2"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(snaketail, BorderLayout.CENTER);
-            }
-
-            else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.56)==s){spacetext.setText(""+(s)+" l3"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(laddertail, BorderLayout.CENTER);
-            }
-            else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.72)==s){spacetext.setText(""+(s)+" l3"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(ladderhead, BorderLayout.CENTER);
+            else if (newBoard.getYaxis()>=4&&(int)(newBoard.getSpaces()*.86)==s){spacetext.setText(""+(s)+" l2"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(ladderhead);
             }
 
-            else if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.91)==s){spacetext.setText(""+(s)+" s3"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(snakehead, BorderLayout.CENTER);
+            else if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.37)==s){spacetext.setText(""+(s)+" s2"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snakehead);
             }
-            else if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.66)==s){spacetext.setText(""+(s)+" s3"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(snaketail, BorderLayout.CENTER);
+            else if (newBoard.getYaxis()>=5&&(int)(newBoard.getSpaces()*.21)==s){spacetext.setText(""+(s)+" s2"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snaketail);
             }
 
-            else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.17)==s){spacetext.setText(""+(s)+" l4"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(laddertail, BorderLayout.CENTER);
+            else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.56)==s){spacetext.setText(""+(s)+" l3"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(laddertail);
             }
-            else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.28)==s){spacetext.setText(""+(s)+" l4"); spacePanelArray[w].add(spacetext,BorderLayout.NORTH); spacePanelArray[w].add(ladderhead, BorderLayout.CENTER);
+            else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.72)==s){spacetext.setText(""+(s)+" l3"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(ladderhead);
+            }
+
+            else if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.91)==s){spacetext.setText(""+(s)+" s3"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snakehead);
+            }
+            else if (newBoard.getYaxis()>=7&&(int)(newBoard.getSpaces()*.66)==s){spacetext.setText(""+(s)+" s3"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(snaketail);
+            }
+
+            else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.17)==s){spacetext.setText(""+(s)+" l4"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(laddertail);
+            }
+            else if (newBoard.getYaxis()>=6&&(int)(newBoard.getSpaces()*.28)==s){spacetext.setText(""+(s)+" l4"); spacePanelArray[w].add(spacetext); spacePanelArray[w].add(ladderhead);
             }
 
             else{ spacetext.setText(""+(s)+""); spacePanelArray[w].add(spacetext); }

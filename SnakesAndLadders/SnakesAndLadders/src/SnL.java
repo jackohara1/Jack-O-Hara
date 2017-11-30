@@ -8,7 +8,7 @@ public class SnL {
 
     }
 
-    /**ladder 1 takes in the position of the player in question and the board size and changes the players position to its new position after ladder**/
+
             public static int ladder1 (int p, int z)
             {
 
@@ -18,7 +18,6 @@ public class SnL {
                                 return p;
             }
 
-            /**Snake 1 takes in the position of the player in question and the board size and changes the players position to its new position after snake**/
     public static int snake1 (int p, int z)
     {
 
@@ -28,7 +27,7 @@ public class SnL {
 
                         return p;
             }
-    /**Laddder2  takes in the position of the player in question and the board size and changes the players position to its new position after ladder**/
+
     public static int ladder2 (int p, int z)
     {
 
@@ -39,7 +38,7 @@ public class SnL {
 
                 return p;
             }
-    /**Snake 1 takes in the position of the player in question and the board size and changes the players position to its new position after snake**/
+
         public static int snake2 (int p, int z)
         {
 
@@ -52,7 +51,7 @@ public class SnL {
 
             }        return p;
         }
-    /**Laddder3  takes in the position of the player in question and the board size and changes the players position to its new position after ladder**/
+
     public static int ladder3 (int p, int z)
     {
             {
@@ -63,7 +62,7 @@ public class SnL {
 
             }        return p;
     }
-    /**Snake 1 takes in the position of the player in question and the board size and changes the players position to its new position after snake**/
+
     public static int snake3 (int p, int z)
     {
 
@@ -74,7 +73,7 @@ public class SnL {
 
                   return p;
     }
-    /**Laddder4  takes in the position of the player in question and the board size and changes the players position to its new position after ladder**/
+
     public static int ladder4 (int p, int z)
     {
 
@@ -87,8 +86,11 @@ public class SnL {
                   return p;    }
 
 
-    /**retrivenewBoardsize checks to see if the boardsize that the user enters is able to be put into an ascetically pleasing board by running it through a for loop and seeing can it be divisable evenly by 10,9,8,7,6 or 5.
-     * if it is not dived equally then the program adds one to the boardsize and it goes around the loop again */
+
+
+
+
+
     public static int retrivenewBoardsize(int b){
        boolean correct=false;
 
@@ -115,8 +117,9 @@ public class SnL {
 
 
     return b;
+
 }
-/**retriveXaxis divides the new board by 10,9,8,7,6 and 5 and then sets the xaxis as the first number that can divide equally by the boardsize**/
+
 public static int retriveXaxis(int b,int x){
 
 int z;
@@ -139,7 +142,6 @@ int z;
 
         return x;
 }
-/**retrieveYaxis takes in the boardsize and the xaxis and then calculates the yaxis by dividing the boardsize by the xaxis**/
     public static int retriveYaxis(int b,int x, int y){
 
 
@@ -150,8 +152,6 @@ int z;
 
         return y;
     }
-
-    /**colourValidation1 takes in the user entered colour and checks to see if the user entered r b g or y if they do not it sends them around a loop until they input a valid colour**/
     public static String colourValidation1(String colour){
 
         while (!colour.equals("B") && !colour.equals("R") && !colour.equals("Y") && !colour.equals("G")) {
@@ -164,8 +164,7 @@ int z;
 
 
         } return colour;}
-    /**colourValidation2 takes in the user entered colour and checks to see if the user entered r b g or y and if the previous users entered
-     * the same colour .if they not it sends them around a loop until they input a valid colour**/
+
     public static String colourValidation2(String colour, String p1colour){
 
         while (!colour.equals("B") && !colour.equals("R") && !colour.equals("Y") && !colour.equals("G") ||
@@ -179,8 +178,7 @@ int z;
 
         }
     return colour;}
-    /**colourValidation2 takes in the user entered colour and checks to see if the user entered r b g or y and if the previous users entered
-     * the same colour .if they not it sends them around a loop until they input a valid colour**/
+
     public static String colourValidation3(String colour, String p1colour, String p2colour){
 
         while (!colour.equals("B") && !colour.equals("R") && !colour.equals("Y") && !colour.equals("G") ||
@@ -194,8 +192,7 @@ int z;
 
         }
     return colour;}
-    /**colourValidation2 takes in the user entered colour and checks to see if the user entered r b g or y and if the previous users entered
-     * the same colour .if they not it sends them around a loop until they input a valid colour**/
+
     public static String colourValidation4(String colour, String p1colour, String p2colour, String p3colour){
 
         while (!colour.equals("B") && !colour.equals("R") && !colour.equals("Y") && !colour.equals("G") ||

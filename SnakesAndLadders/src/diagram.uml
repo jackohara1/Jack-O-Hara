@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="421.5" y="346.0">test</node>
+    <node x="375.0" y="88.5">displayBoard</node>
+    <node x="0.0" y="443.0">SnL</node>
+    <node x="659.0" y="11.0">boardSetUp</node>
+    <node x="0.0" y="0.0">player</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="test" target="displayBoard">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="test" target="boardSetUp">
+      <point x="57.0" y="-26.0" />
+      <point x="564.0" y="321.0" />
+      <point x="820.5" y="321.0" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="test" target="player">
+      <point x="-57.0" y="-26.0" />
+      <point x="450.0" y="321.0" />
+      <point x="177.5" y="321.0" />
+      <point x="0.0" y="148.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="178.875" y="526.125" />
+  <SelectedNodes>
+    <node>SnL</node>
+    <node>boardSetUp</node>
+    <node>test</node>
+    <node>displayBoard</node>
+    <node>player</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
